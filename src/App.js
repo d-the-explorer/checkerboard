@@ -1,5 +1,14 @@
 import { useState } from 'react';
-
+var matrix = [
+  ["", "c", "", "c", "", "c", "", "c"],
+  ["c", "", "c", "", "c", "", "c", ""],
+  ["", "c", "", "c", "", "c", "", "c"],
+  ["", "", "", "", "", "", "", "",],
+  ["", "", "", "", "", "", "", "",],
+  ["c", "", "c", "", "c", "", "c", ""],
+  ["", "c", "", "c", "", "c", "", "c"],
+  ["c", "", "c", "", "c", "", "c", ""],
+]
 
 function Square({ value, onSquareClick, squaro }) {
   return (
@@ -118,7 +127,7 @@ function Board({ xIsNext, squares, onPlay }) {
 }
 
 export default function Game() {
-  const [history, setHistory] = useState([Array(9).fill(null)]);
+  const [history, setHistory] = useState(matrix);
   const [currentMove, setCurrentMove] = useState(0);
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
