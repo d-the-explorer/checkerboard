@@ -1,6 +1,6 @@
 import { useState } from 'react';
 var matrix = [
-["c", "", "c", "", "c", "", "c", ""],
+["c", "", "WORKS!", "", "c", "", "c", ""],
 ["", "c", "", "c", "", "c", "", "c"], 
 ["", "", "", "", "", "", "", ""],     
 ["", "", "", "", "", "", "", ""],     
@@ -20,6 +20,8 @@ function Square({ value, onSquareClick, squaro }) {
 }
 
 function Board({ xIsNext, squares, onPlay }) {
+  console.log(squares);
+  console.log("Does it work?" + squares[0][1]);
   function handleClick(i) {
     if (calculateWinner(squares) || squares[i]) {
       return;
@@ -128,9 +130,11 @@ function Board({ xIsNext, squares, onPlay }) {
 
 export default function Game() {
   const [history, setHistory] = useState(matrix);
+  console.log("history: " + history);
   const [currentMove, setCurrentMove] = useState(0);
   const xIsNext = currentMove % 2 === 0;
-  const currentSquares = history[currentMove];
+  // const currentSquares = history[currentMove];
+  // console.log("currentSquares: " + currentSquares);
 
   function handlePlay(nextSquares) {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
@@ -160,7 +164,7 @@ export default function Game() {
   return (
     <div className="game">
       <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+        <Board xIsNext={xIsNext} squares={history} onPlay={handlePlay} />
       </div>
       <div className="game-info">
         <ol>{moves}</ol>
