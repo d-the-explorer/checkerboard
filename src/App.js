@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Board from './Board';
-import Square from './Square';
+
 
 const matrix = [
   ["c", "", "c", "", "c", "", "c", ""],

@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import Square from './Square';
 export default function Board({ xIsNext, squares, onPlay }) {
   const [selectedPiece, setSelectedPiece] = useState(null);
 
